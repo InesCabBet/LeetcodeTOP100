@@ -9,22 +9,53 @@
 
 int romanToInteger (std::string roman) {
   int result = 0;
-  for (int i = 0; i < roman.length(); i++){
+  int n = roman.length();
+  for (int i = 0; i < n; i++){
     char c = roman[i];
     switch (c) {
       case 'I':
+        if (i + 1 < n && roman[i + 1] == 'V') {
+          result += 4;
+          i += 2;
+          break;
+        }
+        if (i + 1 < n && roman[i + 1] == 'X') {
+          result += 9;
+          i += 2;
+          break;
+        }
         result += 1;
         break;
       case 'V':
         result += 5;
         break;
       case 'X':
+        if (i + 1 < n && roman[i + 1] == 'L'){
+          result += 40;
+          i += 2;
+          break;
+        }
+        if (i + 1 <n && roman[i + 1] == 'C'){
+          result += 90;
+          i += 2;
+          break;
+        }
         result += 10;
         break;
       case 'L':
         result += 50;
         break;
       case 'C':
+        if (i + 1 < n && roman[i + 1] == 'D'){
+          result += 400;
+          i += 2;
+          break;
+        }
+        if (i + 1 < n && roman[i + 1] == 'M'){
+          result += 900;
+          i += 2;
+          break;
+        }
         result += 100;
         break;
       case 'D':
