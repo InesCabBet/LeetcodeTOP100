@@ -9,8 +9,9 @@
 
 int romanToInteger (std::string roman) {
   int result = 0;
+  int i = 0;
   int n = roman.length();
-  for (int i = 0; i < n; i++){
+  while (i < n){
     char c = roman[i];
     switch (c) {
       case 'I':
@@ -25,9 +26,11 @@ int romanToInteger (std::string roman) {
           break;
         }
         result += 1;
+        i++;
         break;
       case 'V':
         result += 5;
+        i++;
         break;
       case 'X':
         if (i + 1 < n && roman[i + 1] == 'L'){
@@ -41,9 +44,11 @@ int romanToInteger (std::string roman) {
           break;
         }
         result += 10;
+        i++;
         break;
       case 'L':
         result += 50;
+        i++;
         break;
       case 'C':
         if (i + 1 < n && roman[i + 1] == 'D'){
@@ -57,12 +62,15 @@ int romanToInteger (std::string roman) {
           break;
         }
         result += 100;
+        i++;
         break;
       case 'D':
         result += 500;
+        i++;
         break;
       case 'M':
-        result += 100;
+        result += 1000;
+        i++;
         break;
       default: 
         return -1;
